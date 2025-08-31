@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <!-- West Camera Column -->
+    <LinearLayout
+        android:id="@+id/camera_column_west"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingEnd="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="West Camera"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="4dp"/>
+
+        <WebView
+            android:id="@+id/webview_west"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#DDDDDD"/>
+
+        <!-- Controls Wrapper for West Camera -->
+        <LinearLayout
+            android:id="@+id/controls_wrapper_west"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_url_west"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="West Camera URL will appear here"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
+
+            <GridLayout
+                android:id="@+id/buttons_grid_west"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_home"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Home"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Home Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_choir"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Choir"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Choir Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_pulpit"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Pulpit"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Pulpit Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_panorama"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Panorama"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Panorama Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_preset5"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="West P5"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Preset 5" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_preset6"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="West P6"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Preset 6" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_preset7"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="West P7"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Preset 7" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_west_refresh"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Refresh Video"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:textColor="#FF333333"
+                    android:contentDescription="West Camera Refresh" />
+            </GridLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- DIVIDER VIEW -->
+    <View
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:background="#FFFF0000" />
+
+    <!-- East Camera Column -->
+    <LinearLayout
+        android:id="@+id/camera_column_east"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="East Camera"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="4dp"/>
+
+        <WebView
+            android:id="@+id/webview_east"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#DDDDDD"/>
+
+        <!-- Controls Wrapper for East Camera -->
+        <LinearLayout
+            android:id="@+id/controls_wrapper_east"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_url_east"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="East Camera URL will appear here"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
+
+            <GridLayout
+                android:id="@+id/buttons_grid_east"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_home"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Home"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Home Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_choir"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Choir"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Choir Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_pulpit"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Pulpit"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Pulpit Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_panorama"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Panorama"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Panorama Preset" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_preset5"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="East P5"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Preset 5" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_preset6"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="East P6"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Preset 6" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_preset7"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="East P7"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Preset 7" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_east_refresh"
+                    style="@style/Widget.App.Button.DesktopKey"
+                    android:layout_width="192dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Refresh Video"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:textColor="#FF333333"
+                    android:contentDescription="East Camera Refresh" />
+            </GridLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

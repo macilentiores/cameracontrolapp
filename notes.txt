@@ -1,0 +1,1 @@
+this is camercontrolappv3 but mmodified to query and get the installed presets from each camera and reprogram the buttons.
