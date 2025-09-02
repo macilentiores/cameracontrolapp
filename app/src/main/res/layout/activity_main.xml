@@ -18,12 +18,27 @@
         android:paddingEnd="4dp">
 
         <TextView
+            android:id="@+id/tv_west_camera_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="West Camera"
-            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="West Camera (2)"
+            android:textSize="25sp"
+            android:textAllCaps="true"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:textColor="#FF000000"/>
+
+        <!-- TextView for active West preset -->
+        <TextView
+            android:id="@+id/tv_active_west_preset_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="21sp"
+            android:textAllCaps="true"/>
 
         <WebView
             android:id="@+id/webview_west"
@@ -176,12 +191,27 @@
         android:paddingStart="4dp">
 
         <TextView
+            android:id="@+id/tv_east_camera_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="East Camera"
-            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="East Camera (1)"
+            android:textSize="25sp"
+            android:textAllCaps="true"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:textColor="#FF000000"/>
+
+        <!-- TextView for active East preset -->
+        <TextView
+            android:id="@+id/tv_active_east_preset_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="21sp"
+            android:textAllCaps="true"/>
 
         <WebView
             android:id="@+id/webview_east"
