@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import java.io.UnsupportedEncodingException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -32,13 +35,13 @@ class MainActivity : AppCompatActivity() {
     private val EAST_QUERY_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?query=presetposall"
 
     // Preset URLs (will be dynamically updated after query)
-    private var WEST_CHOIR_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=1" // Default
-    private var WEST_PULPIT_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=2"
-    private var WEST_HOME_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=3"
-    private var WEST_PANORAMA_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=4"
-    private var WEST_PRESET5_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=5"
-    private var WEST_PRESET6_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=6"
-    private var WEST_PRESET7_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetno=7"
+    private var WEST_CHOIR_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Home" // Default
+    private var WEST_PULPIT_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir"
+    private var WEST_HOME_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
+    private var WEST_PANORAMA_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Panorama"
+    private var WEST_PRESET5_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P5"
+    private var WEST_PRESET6_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P6"
+    private var WEST_PRESET7_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P7"
 
     private var EAST_CHOIR_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir" // Default
     private var EAST_PULPIT_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
@@ -85,6 +88,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         setContentView(R.layout.activity_main)
+
+        // Make the activity full screen and hide system bars
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        // Configure the behavior of the hidden system bars: they will appear temporarily with a swipe gesture.
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        // Hide both the status bar and the navigation bar.
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
 
         // Initialize UI elements
         tvUrlWest = findViewById(R.id.tv_url_west)
@@ -144,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         val executor = Executors.newSingleThreadExecutor()
         executor.execute {
             val westResponse = fetchQuery(WEST_QUERY_URL)
-            parsePresets(westResponse, westPresets, CAM_WEST, true)
+            parsePresets(westResponse, westPresets, CAM_WEST, false)
             val eastResponse = fetchQuery(EAST_QUERY_URL)
             parsePresets(eastResponse, eastPresets, CAM_EAST, false)
             runOnUiThread {
@@ -226,7 +237,7 @@ class MainActivity : AppCompatActivity() {
                 displayablePresets.add(entry)
             }
         }
-        if (homePresetEntry == null) { // If "Home" wasn't found, just fill with first available
+        if (homePresetEntry == null) { // If '''Home''' wasn't found, just fill with first available
             displayablePresets.clear()
             cameraPresetEntries.forEach { entry ->
                 if (displayablePresets.size < 7) {

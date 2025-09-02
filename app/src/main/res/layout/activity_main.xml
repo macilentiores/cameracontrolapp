@@ -47,6 +47,13 @@
             android:layout_weight="1"
             android:background="#DDDDDD"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FF000000"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
         <!-- Controls Wrapper for West Camera -->
         <LinearLayout
             android:id="@+id/controls_wrapper_west"
@@ -179,7 +186,7 @@
     <View
         android:layout_width="4dp"
         android:layout_height="match_parent"
-        android:background="#FFFF0000" />
+        android:background="#FF000000" /> <!-- Changed to black -->
 
     <!-- East Camera Column -->
     <LinearLayout
@@ -219,6 +226,13 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="#DDDDDD"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FF000000"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
         <!-- Controls Wrapper for East Camera -->
         <LinearLayout
