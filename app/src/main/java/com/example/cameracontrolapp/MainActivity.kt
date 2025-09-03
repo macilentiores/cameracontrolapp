@@ -1,11 +1,13 @@
 package com.example.cameracontrolapp
 
+import android.content.Intent // Added
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.WebView
 import android.widget.Button
+import android.widget.ImageButton // Added
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnEastPreset6: Button
     private lateinit var btnEastPreset7: Button
     private lateinit var btnEastRefresh: Button
+    private lateinit var btnOptions: ImageButton // Added
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,6 +137,12 @@ class MainActivity : AppCompatActivity() {
         btnEastPreset6 = findViewById(R.id.btn_east_preset6)
         btnEastPreset7 = findViewById(R.id.btn_east_preset7)
         btnEastRefresh = findViewById(R.id.btn_east_refresh)
+
+        btnOptions = findViewById(R.id.btn_options) // Added
+        btnOptions.setOnClickListener { // Added
+            val intent = Intent(this, SettingsActivity::class.java) // Added
+            startActivity(intent) // Added
+        } // Added
 
         // Query presets at startup and configure buttons
         queryPresets {
