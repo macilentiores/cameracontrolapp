@@ -23,35 +23,35 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
 
     // Camera configurations
-    private val CAM_WEST = "192.168.88.3"
-    private val CAM_EAST = "192.168.88.2"
+    private val CAM_WEST_IP = "192.168.88.3" // Renamed for clarity
+    private val CAM_EAST_IP = "192.168.88.2" // Renamed for clarity
     private val USER = "admin"
     private val PASS = "oneroom"
 
     // MJPEG stream URLs with embedded credentials
-    private val WEST_STREAM_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/mjpg/video.cgi"
-    private val EAST_STREAM_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/mjpg/video.cgi"
+    private val WEST_STREAM_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/mjpg/video.cgi"
+    private val EAST_STREAM_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/mjpg/video.cgi"
 
     // Query URLs for presets
-    private val WEST_QUERY_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?query=presetposall"
-    private val EAST_QUERY_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?query=presetposall"
+    private val WEST_QUERY_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?query=presetposall"
+    private val EAST_QUERY_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?query=presetposall"
 
     // Preset URLs (will be dynamically updated after query)
-    private var WEST_CHOIR_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Home" // Default
-    private var WEST_PULPIT_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir"
-    private var WEST_HOME_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
-    private var WEST_PANORAMA_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Panorama"
-    private var WEST_PRESET5_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P5"
-    private var WEST_PRESET6_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P6"
-    private var WEST_PRESET7_URL = "http://$USER:$PASS@$CAM_WEST/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P7"
+    private var WEST_CHOIR_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Home" // Default
+    private var WEST_PULPIT_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir"
+    private var WEST_HOME_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
+    private var WEST_PANORAMA_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Panorama"
+    private var WEST_PRESET5_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P5"
+    private var WEST_PRESET6_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P6"
+    private var WEST_PRESET7_URL = "http://$USER:$PASS@$CAM_WEST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=West%20P7"
 
-    private var EAST_CHOIR_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir" // Default
-    private var EAST_PULPIT_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
-    private var EAST_HOME_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Home"
-    private var EAST_PANORAMA_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Panorama"
-    private var EAST_PRESET5_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset5"
-    private var EAST_PRESET6_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset6"
-    private var EAST_PRESET7_URL = "http://$USER:$PASS@$CAM_EAST/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset7"
+    private var EAST_CHOIR_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Choir" // Default
+    private var EAST_PULPIT_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Pulpit"
+    private var EAST_HOME_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Home"
+    private var EAST_PANORAMA_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Panorama"
+    private var EAST_PRESET5_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset5"
+    private var EAST_PRESET6_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset6"
+    private var EAST_PRESET7_URL = "http://$USER:$PASS@$CAM_EAST_IP/axis-cgi/com/ptz.cgi?gotoserverpresetname=Preset7"
 
     // Maps for parsed presets (number to name)
     private val westPresets: MutableMap<Int, String> = mutableMapOf()
@@ -92,19 +92,15 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         setContentView(R.layout.activity_main)
 
-        // Make the activity full screen and hide system bars
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        // Configure the behavior of the hidden system bars: they will appear temporarily with a swipe gesture.
         windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar.
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
 
-        // Initialize UI elements
         tvUrlWest = findViewById(R.id.tv_url_west)
         tvUrlEast = findViewById(R.id.tv_url_east)
-        tvUrlWest.text = "West Camera URL will appear here"
-        tvUrlEast.text = "East Camera URL will appear here"
+        tvUrlWest.text = getString(R.string.camera_not_selected) // Using string resource
+        tvUrlEast.text = getString(R.string.camera_not_selected) // Using string resource
 
         webViewWest = findViewById(R.id.webview_west)
         webViewEast = findViewById(R.id.webview_east)
@@ -112,14 +108,11 @@ class MainActivity : AppCompatActivity() {
         setupWebView(webViewWest, WEST_STREAM_URL)
         setupWebView(webViewEast, EAST_STREAM_URL)
 
-        // Initialize TextViews for active preset display
         tvActiveWestPresetDisplay = findViewById(R.id.tv_active_west_preset_display)
         tvActiveEastPresetDisplay = findViewById(R.id.tv_active_east_preset_display)
-        // Optionally, set initial text for these displays if needed
-        tvActiveWestPresetDisplay.text = "" // Or "No Preset Selected"
-        tvActiveEastPresetDisplay.text = "" // Or "No Preset Selected"
+        tvActiveWestPresetDisplay.text = getString(R.string.camera_not_selected) // Using string resource
+        tvActiveEastPresetDisplay.text = getString(R.string.camera_not_selected) // Using string resource
 
-        // Initialize buttons
         btnWestChoir = findViewById(R.id.btn_west_choir)
         btnWestPulpit = findViewById(R.id.btn_west_pulpit)
         btnWestHome = findViewById(R.id.btn_west_home)
@@ -138,13 +131,12 @@ class MainActivity : AppCompatActivity() {
         btnEastPreset7 = findViewById(R.id.btn_east_preset7)
         btnEastRefresh = findViewById(R.id.btn_east_refresh)
 
-        btnOptions = findViewById(R.id.btn_options) // Added
-        btnOptions.setOnClickListener { // Added
-            val intent = Intent(this, SettingsActivity::class.java) // Added
-            startActivity(intent) // Added
-        } // Added
+        btnOptions = findViewById(R.id.btn_options)
+        btnOptions.setOnClickListener { 
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
 
-        // Query presets at startup and configure buttons
         queryPresets {
             setupButtonListeners()
         }
@@ -152,7 +144,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupWebView(webView: WebView, url: String) {
         webView.settings.apply {
-            javaScriptEnabled = true
+            javaScriptEnabled = true // Warning: Review XSS vulnerabilities
             loadWithOverviewMode = true
             useWideViewPort = true
             domStorageEnabled = true
@@ -164,14 +156,14 @@ class MainActivity : AppCompatActivity() {
         val executor = Executors.newSingleThreadExecutor()
         executor.execute {
             val westResponse = fetchQuery(WEST_QUERY_URL)
-            parsePresets(westResponse, westPresets, CAM_WEST, false)
+            parsePresets(westResponse, westPresets, CAM_WEST_IP, false)
             val eastResponse = fetchQuery(EAST_QUERY_URL)
-            parsePresets(eastResponse, eastPresets, CAM_EAST, false)
+            parsePresets(eastResponse, eastPresets, CAM_EAST_IP, false)
             runOnUiThread {
                 if (westPresets.isEmpty() && eastPresets.isEmpty()) {
-                    Toast.makeText(this, "Failed to sync presets—using defaults", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Failed to sync presets\u2014using defaults", Toast.LENGTH_LONG).show() // Consider string resource
                 } else {
-                    Toast.makeText(this, "Presets synced successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Presets synced successfully", Toast.LENGTH_SHORT).show() // Consider string resource
                 }
                 onComplete()
             }
@@ -246,7 +238,7 @@ class MainActivity : AppCompatActivity() {
                 displayablePresets.add(entry)
             }
         }
-        if (homePresetEntry == null) { // If '''Home''' wasn't found, just fill with first available
+        if (homePresetEntry == null) { 
             displayablePresets.clear()
             cameraPresetEntries.forEach { entry ->
                 if (displayablePresets.size < 7) {
@@ -255,7 +247,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val uiSlots = if (camIp == CAM_WEST) {
+        val uiSlots = if (camIp == CAM_WEST_IP) { // Using renamed const
             listOf(
                 Pair(btnWestChoir, { url: String -> WEST_CHOIR_URL = url }),
                 Pair(btnWestPulpit, { url: String -> WEST_PULPIT_URL = url }),
@@ -265,7 +257,7 @@ class MainActivity : AppCompatActivity() {
                 Pair(btnWestPreset6, { url: String -> WEST_PRESET6_URL = url }),
                 Pair(btnWestPreset7, { url: String -> WEST_PRESET7_URL = url })
             )
-        } else { // CAM_EAST
+        } else { // CAM_EAST_IP
             listOf(
                 Pair(btnEastChoir, { url: String -> EAST_CHOIR_URL = url }),
                 Pair(btnEastPulpit, { url: String -> EAST_PULPIT_URL = url }),
@@ -298,8 +290,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 setUrlLambda(url)
             } else {
-                button.text = "Preset ${i + 1}" // Default text if not enough presets
-                button.visibility = View.GONE // Hide button if no preset for this slot
+                button.text = getString(R.string.ip_address_format, (i+1).toString()) // Example: "Preset 1", using a format string
+                button.visibility = View.GONE 
             }
         }
     }
@@ -350,7 +342,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnWestRefresh.setOnClickListener {
             webViewWest.reload()
-            Toast.makeText(this, "Refreshing West Camera...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Refreshing West Camera...", Toast.LENGTH_SHORT).show() // Consider string resource
         }
 
         // East Camera Buttons
@@ -398,7 +390,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnEastRefresh.setOnClickListener {
             webViewEast.reload()
-            Toast.makeText(this, "Refreshing East Camera...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Refreshing East Camera...", Toast.LENGTH_SHORT).show() // Consider string resource
         }
     }
 
@@ -415,23 +407,23 @@ class MainActivity : AppCompatActivity() {
 
                 val responseCode = urlConnection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    // Optionally, you can read the response if needed:
-                    // val responseBody = urlConnection.inputStream.bufferedReader().use { it.readText() }
-                    // Log.d("REQUEST_SUCCESS", "Successfully activated $presetName. Response: $responseBody")
                     runOnUiThread {
-                        Toast.makeText(this@MainActivity, "Activated preset: $presetName", Toast.LENGTH_SHORT).show()
+                        // Using a format string for Toast message
+                        Toast.makeText(this@MainActivity, getString(R.string.ip_address_format, presetName), Toast.LENGTH_SHORT).show() 
                     }
                 } else {
                     val errorBody = urlConnection.errorStream?.bufferedReader()?.use { it.readText() } ?: "No error body"
                     Log.e("REQUEST_FAIL", "Failed to activate $presetName. Code: $responseCode. URL: $urlString. Error: $errorBody")
                     runOnUiThread {
-                        Toast.makeText(this@MainActivity, "Failed to activate preset: $presetName. Error: $responseCode", Toast.LENGTH_LONG).show()
+                         // Using a format string for Toast message, assuming a new string like <string name="failed_to_activate_preset_format">Failed to activate preset: %1$s. Error: %2$d</string>
+                        Toast.makeText(this@MainActivity, "Failed to activate preset: $presetName. Error: $responseCode", Toast.LENGTH_LONG).show() // Placeholder, improve with formatted string
                     }
                 }
             } catch (e: Exception) {
                 Log.e("REQUEST_EXCEPTION", "Error activating preset $presetName with URL: $urlString", e)
                 runOnUiThread {
-                    Toast.makeText(this@MainActivity, "Error activating preset: $presetName (${e.message})", Toast.LENGTH_LONG).show()
+                    // Using a format string for Toast message, assuming a new string like <string name="error_activating_preset_format">Error activating preset: %1$s (%2$s)</string>
+                    Toast.makeText(this@MainActivity, "Error activating preset: $presetName (${e.message})", Toast.LENGTH_LONG).show() // Placeholder, improve with formatted string
                 }
             } finally {
                 urlConnection?.disconnect()
