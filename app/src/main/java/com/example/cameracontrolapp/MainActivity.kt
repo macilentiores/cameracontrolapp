@@ -406,7 +406,7 @@ class MainActivity : AppCompatActivity() {
                 urlConnection.readTimeout = 5000    // 5 seconds
 
                 val responseCode = urlConnection.responseCode
-                if (responseCode == HttpURLConnection.HTTP_OK) {
+                if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_NO_CONTENT) { // Modified condition
                     runOnUiThread {
                         // Using a format string for Toast message
                         Toast.makeText(this@MainActivity, getString(R.string.ip_address_format, presetName), Toast.LENGTH_SHORT).show() 
