@@ -16,4 +16,22 @@
     <string name="start_record_button_text">Start Record</string>
     <string name="stop_record_button_text">Stop Record</string>
     <string name="download_clip_button_text">Download Latest Clip</string>
+
+    <!-- Strings for SettingsActivity -->
+    <string name="settings_action_start_record">Start Record</string>
+    <string name="settings_action_stop_record">Stop Record</string>
+
+    <string name="settings_toast_action_successful">%1$s successful</string>
+    <string name="settings_toast_action_failed">%1$s failed (Code: %2$d)</string>
+    <string name="settings_toast_action_error">%1$s error: %2$s</string>
+
+    <string name="settings_toast_found_token">Found token: %1$s. Starting download…</string>
+    <string name="settings_toast_no_clips_found">No clips found or token missing.</string>
+    <string name="settings_toast_list_clips_failed">List clips failed (Code: %1$d)</string>
+    <string name="settings_toast_list_clips_error">List clips error: %1$s</string>
+
+    <string name="settings_toast_download_dir_not_available">Download directory not available.</string>
+    <string name="settings_toast_clip_saved">Clip saved to %1$s</string>
+    <string name="settings_toast_download_failed">Download failed (Code: %1$d)</string>
+    <string name="settings_toast_download_error">Download error: %1$s</string>
 </resources>
